@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simple Wire — Moving Your Feeds In</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         max-width: 720px; margin: 0 auto; padding: 24px; line-height: 1.6; color: #1c1c1e; }
+  h1 { font-size: 1.6em; } h2 { font-size: 1.15em; margin-top: 1.6em; }
+  h3 { font-size: 1em; margin-top: 1.3em; margin-bottom: 0.3em; }
+  code { font-family: ui-monospace, Menlo, monospace; font-size: 0.9em; }
+  ol.steps li { margin-bottom: 0.4em; }
+  @media (prefers-color-scheme: dark) { body { background: #1c1c1e; color: #f2f2f7; } a { color: #6cb2ff; } }
+</style>
+</head>
+<body>
+<h1>Simple Wire — Moving Your Feeds In</h1>
+<p><em>Last updated: August 25, 2026</em></p>
+
+<p>If you already read feeds somewhere else, you don't have to retype anything. Nearly every RSS reader — Feedly, Inoreader, NetNewsWire, Reeder, Feedbin, NewsBlur, The Old Reader, and most others — can export your subscriptions as an <strong>OPML file</strong>, and Simple Wire reads it directly.</p>
+
+<h2>The short version</h2>
+<ol class="steps">
+  <li>Export an OPML file from your current reader.</li>
+  <li>In Simple Wire, open <strong>Settings → Feeds → Import OPML…</strong></li>
+  <li>Pick the file. Your feeds appear, folders and all, and start fetching straight away.</li>
+</ol>
+<p>If you're setting up Simple Wire for the first time, the welcome screen offers <strong>Import OPML</strong> as well — same thing, one step earlier.</p>
+
+<h2>Getting the file out of your current reader</h2>
+<p>These paths were accurate when this page was written, but apps move their menus around. If one doesn't match what you see, look for a section called <em>Import/Export</em>, <em>Subscriptions</em>, or <em>Backup</em> in that service's settings — the export is almost always there, and it's almost always free.</p>
+
+<h3>Feedly</h3>
+<p>On the web, go to <a href="https://feedly.com/i/opml">feedly.com/i/opml</a> and choose <strong>Download OPML</strong>. The Feedly mobile apps don't offer the export, so use a browser — on an iPhone or iPad that's fine, the file lands in Files.</p>
+
+<h3>Inoreader</h3>
+<p>On the web, open <strong>Preferences → Import/Export</strong> and use <strong>Export subscriptions</strong> under the OPML heading.</p>
+
+<h3>NetNewsWire</h3>
+<p>On Mac, <strong>File → Export Subscriptions…</strong>. On iPhone or iPad, <strong>Settings → Import/Export Subscriptions</strong>.</p>
+
+<h3>Reeder</h3>
+<p>Reeder syncs with an account elsewhere — iCloud, Feedbin, Inoreader, and so on. If it does, export from that service instead, since that's where the real subscription list lives. If you use Reeder on its own, its settings include an OPML export.</p>
+
+<h3>Feedbin, The Old Reader, NewsBlur, Bazqux, FreshRSS</h3>
+<p>All of these keep an OPML export in their web settings, under Import/Export or a similarly named section.</p>
+
+<h3>Google Reader-era backups</h3>
+<p>An OPML file from any year still works. The format has barely changed since 2000, and Simple Wire doesn't care how old the file is.</p>
+
+<h2>Importing on iPhone or iPad</h2>
+<p>When you download an OPML file in Safari on iOS, it goes to <strong>Files → On My iPhone → Downloads</strong> (or iCloud Drive, depending on your Safari settings). In Simple Wire, tap <strong>Import OPML…</strong>, then browse to it there.</p>
+<p>If the file arrived as an email attachment, tap and hold it, choose <strong>Save to Files</strong>, then import it from Simple Wire. Simple Wire accepts <code>.opml</code>, <code>.xml</code>, and plain-text files.</p>
+
+<h2>What comes across — and what doesn't</h2>
+<p>OPML is a list of subscriptions. That's all it has ever been, in any reader. So:</p>
+<ul>
+  <li><strong>Comes across:</strong> every feed's address, its title, and the folder it was in.</li>
+  <li><strong>Doesn't come across:</strong> which articles you'd already read, your starred or saved items, and any tags or highlights. No reader can transfer those through OPML — the file simply has nowhere to put them.</li>
+  <li><strong>Doesn't come across:</strong> usernames and passwords for private feeds. If you subscribe to a feed that requires a login, add it again in Simple Wire with <strong>Requires username &amp; password</strong> switched on. Credentials are never written into an OPML file by any reader, which is a good thing.</li>
+</ul>
+<p>Expect your first refresh to show a large number of unread articles. Nothing is wrong — Simple Wire has no way to know what you'd already read elsewhere. Open the list, pull up past the last article, and release to mark the whole thing read. Then start clean.</p>
+
+<h2>Folders</h2>
+<p>Folders come across with their names intact. One thing to know: if your old reader let you nest folders inside folders, Simple Wire flattens that to a single level, and a feed lands in the innermost folder it was in. A feed filed under <em>News → Technology</em> arrives in a folder called <strong>Technology</strong>. Feeds that weren't in any folder land under <strong>Uncategorized</strong>, where you can file them later.</p>
+
+<h2>No limits</h2>
+<p>Every feed in the file is imported, however many there are, with its folder structure. You don't need to unlock anything to import.</p>
+
+<h2>Importing more than once is safe</h2>
+<p>Simple Wire skips any feed whose address it already has, and tells you how many it skipped. So you can import a second OPML from another service, or re-import the same file after unlocking, without ending up with doubles.</p>
+<p>One edge case: matching is by exact feed address. If two files list the same feed with slightly different addresses — one <code>http</code> and one <code>https</code>, say, or one with a trailing slash — they'll come in as two subscriptions. Delete whichever one you don't want from <strong>Settings → Feeds → Manage Feeds</strong>.</p>
+
+<h2>If something goes wrong</h2>
+<h3>“No feeds found in that OPML file.”</h3>
+<p>Usually one of three things. The file may still be zipped — some services deliver the export inside a <code>.zip</code>, so unzip it first and import the OPML inside. It may be an HTML page rather than the file itself, which happens when a download is saved from a page that required a login. Or the export may genuinely be empty, which is worth checking back in the original service.</p>
+
+<h3>“Couldn't read that file.”</h3>
+<p>The file couldn't be opened from where it's stored. Copy it into Files → On My iPhone → Downloads, or onto your Mac's desktop, and import it from there.</p>
+
+<h3>A feed shows “Feed unreachable”</h3>
+<p>The subscription imported fine, but that address no longer responds. Sites move or retire their feeds, and an old OPML can carry addresses that stopped working years ago. Simple Wire keeps retrying on its own. If it never recovers, delete the feed and add the site again by its web address — Simple Wire will find the current feed itself.</p>
+
+<h2>Taking your feeds back out</h2>
+<p>The same door works in both directions. <strong>Settings → Feeds → Export OPML…</strong> writes a standard OPML file with your feeds and folders, which any other reader can import. There's no lock-in here, and no step where your subscription list stops being yours.</p>
+
+<h2>One note about older shared articles</h2>
+<p>Not a migration question, but it comes up alongside one, so it lives here.</p>
+<p>When someone shares an article with you, Simple Wire opens it as an article — the sender's copy of the text, without the publisher's page furniture. That's faster, and on sites that cut their feeds short it's often more readable than the live page.</p>
+<p>Shares sent from older versions of Simple Wire carry only a title and a link, because earlier releases didn't send the article text along. Those open the publisher's web page instead, since there's nothing else to render. Nothing is broken, and it can't be repaired after the fact — the text was never sent. Ask the sender to share it again from a current version and the new copy will open as an article.</p>
+<p>Either way you're one tap from the other view: the Reader Mode button in the toolbar fetches the full article from the site, and <strong>Settings → Shared articles open as</strong> lets you make <strong>Web Page</strong> the default if that's what you prefer.</p>
+
+<h2>Still stuck?</h2>
+<p>Send the OPML file and a short description of what happened to <a href="mailto:arosemenaapps@gmail.com">arosemenaapps@gmail.com</a> and we'll take a look.</p>
+
+</body>
+</html>
